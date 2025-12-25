@@ -14,6 +14,7 @@
 
 ## 📋 Table of Contents
 - [Overview](#-overview)
+- [Comparison between MSTest and xUnit](#-Comparison-between-MSTest-and-xUnit)
 - [References](#-references)
 
 ## 🎯 Overview
@@ -29,23 +30,52 @@ dotnet reference add ../PrimeService/PrimeService.csproj
 ```
 
 - Create a class for testing with the decoration (attribute)
-**[TestClass]**
+
+	**[TestClass]**
 
 - Create a method for testing with the attribute:
-**[TestMethod]**
+
+	**[TestMethod]**
 
 - In case you need input data add bellow as many attribtes:
-**[DataRow(imput1, imput2, ...)]**
+
+	**[DataRow(imput1, imput2, ...)]**
 
 	as you need with 1 or more imput data and match then to input parameters of the method
 
 - Use the Assert method you need to accomplish the test:
-	- Assert.IsFalse(...)
-	- Assert.IsEqual(...)
-	- Assert.Contains(...)
-	- Assert.HasCount(...)
-	- ...
-	
+
+	Assert.IsFalse(...)
+	Assert.IsEqual(...)
+	Assert.Contains(...)
+	Assert.HasCount(...)
+
+## ✅ Comparison between MSTest and xUnit 
+| Purpose | MSTest | xUnit |
+|---------|---------|-------|
+| **Test Class** | `[TestClass]` | No attribute needed (any public class) |
+| **Test Method** | `[TestMethod]` | `[Fact]` |
+| **Parameterized Test** | `[TestMethod]` with `[DataRow]` | `[Theory]` with `[InlineData]`, `[MemberData]`, or `[ClassData]` |
+| **Inline Test Data** | `[DataRow(value1, value2)]` | `[InlineData(value1, value2)]` |
+| **External Data Source** | `[DataSource]` | `[MemberData]` or `[ClassData]` |
+| **Setup (Before Each Test)** | `[TestInitialize]` | Constructor |
+| **Teardown (After Each Test)** | `[TestCleanup]` | `IDisposable.Dispose()` |
+| **Setup (Before All Tests)** | `[ClassInitialize]` (static method) | `IClassFixture<T>` |
+| **Teardown (After All Tests)** | `[ClassCleanup]` (static method) | `IClassFixture<T>` with disposal |
+| **Ignore/Skip Test** | `[Ignore]` or `[Ignore("reason")]` | `[Fact(Skip = "reason")]` or `[Theory(Skip = "reason")]` |
+| **Test Category/Trait** | `[TestCategory("CategoryName")]` | `[Trait("Category", "CategoryName")]` |
+| **Expected Exception** | `[ExpectedException(typeof(Exception))]` | Use `Assert.Throws<T>()` (no attribute) |
+| **Test Timeout** | `[Timeout(milliseconds)]` | `[Fact(Timeout = milliseconds)]` |
+| **Assembly Setup/Teardown** | `[AssemblyInitialize]` / `[AssemblyCleanup]` | `ICollectionFixture<T>` or assembly fixtures |
+
+**Key Differences:**
+
+- **xUnit philosophy**: xUnit prefers constructor/dispose patterns over attributes for setup/teardown, promoting better object-oriented practices
+- **Parameterized tests**: xUnit uses `[Theory]` as the base attribute, while MSTest uses `[DataTestMethod]`
+- **Class marking**: MSTest requires `[TestClass]`, xUnit discovers any public class with test methods
+- **Exception testing**: xUnit doesn't use attributes for expected exceptions, preferring assertion methods instead
+
+
 ## 📕 References
 - [Unit testing C# with MSTest and .NET](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-mstest)
 
