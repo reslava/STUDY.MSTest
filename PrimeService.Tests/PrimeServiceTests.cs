@@ -39,7 +39,7 @@ namespace Prime.UnitTests.Services
         {
             var result = PrimeService.IsPrime (value);
 
-            Assert.AreEqual (result, output, $"{value} number should be {output} prime.");                
+            Assert.AreEqual (result, output, $"{value} number should be {output} prime.");                   
         }
     }
 }
