@@ -50,6 +50,13 @@ dotnet reference add ../PrimeService/PrimeService.csproj
 	Assert.Contains(...)
 	Assert.HasCount(...)
 
+>TIP: We can run the test from the command line:
+```shell
+dotnet run --project TestsProjectName
+```
+
+
+
 ## ✅ Comparison between MSTest and xUnit 
 | Purpose | MSTest | xUnit |
 |---------|---------|-------|
