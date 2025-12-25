@@ -26,7 +26,7 @@ this will add to the project the needed packages as MSTest.Framework
 
 - Add a reference to the project you are going to test:
 ```shell
-dotnet reference add ProjectToBeTested.csproj
+dotnet reference add ../ProjectToBeTested.csproj
 ```
 
 - Create a class for testing with the decoration (attribute)
