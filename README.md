@@ -26,7 +26,7 @@ this will add to the project the needed packages as MSTest.Framework
 
 - Add a reference to the project you are going to test:
 ```shell
-dotnet reference add ../PrimeService/PrimeService.csproj
+dotnet reference add ProjectToBeTested.csproj
 ```
 
 - Create a class for testing with the decoration (attribute)
@@ -50,7 +50,7 @@ dotnet reference add ../PrimeService/PrimeService.csproj
 	Assert.Contains(...)
 	Assert.HasCount(...)
 
->TIP: We can run the test from the command line:
+>TIP: We can run the tests from the command line:
 ```shell
 dotnet run --project TestsProjectName
 ```
