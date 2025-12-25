@@ -85,6 +85,7 @@ dotnet run --project TestsProjectName
 
 ## 📕 References
 - [Unit testing C# with MSTest and .NET](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-mstest)
+- [Master The Basics of MSTest Like a PRO In Under 15 minutes!](https://youtu.be/lxedalYArto?si=xCI_Xtv46V7g7Rqg)
 
 ---
 
